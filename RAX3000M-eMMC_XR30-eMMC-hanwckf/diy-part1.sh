@@ -19,3 +19,5 @@
 #git clone https://github.com/messense/aliyundrive-webdav package/messense
 #git clone https://github.com/destan19/OpenAppFilter package/OpenAppFilter
 echo 'src-git qmodem https://github.com/FUjr/QModem.git;main' >> feeds.conf.default
+
+git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages package/openwrt-passwall
