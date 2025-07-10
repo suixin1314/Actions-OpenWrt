@@ -89,6 +89,8 @@ jobs:
         sudo apt install python3 pkg-config ninja-build clang
         sudo apt install build-essential curl pkg-config libssl-dev git python3 cmake ninja-build gcc-multilib libc6-dev-i386
         sudo bash -c 'bash <(curl -s https://build-scripts.immortalwrt.org/init_build_environment.sh)'
+        sudo apt-get install -y libpcre3-dev libiconv-dev rustc cargo
+
 
     - name: 清理磁盘空间(Ubuntu)
       uses: jlumbroso/free-disk-space@main
@@ -124,6 +126,7 @@ jobs:
         cd openwrt
         ./scripts/feeds update -a
         ./scripts/feeds install -a
+        
 
     - name: 加载config & DIY_P2_SH
       run: |
