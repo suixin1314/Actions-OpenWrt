@@ -30,7 +30,16 @@ sed -i 's|/bin/login|/bin/login -f root|g' feeds/packages/utils/ttyd/files/ttyd.
 
 #./scripts/feeds install -a -f -p qmodem
 
+# 移除要替换的包
+rm -rf feeds/packages/net/msd_lite
+rm -rf feeds/luci/applications/luci-app-netdata
+rm -rf feeds/luci/applications/luci-app-serverchan
+rm -rf feeds/packages/mqttled
+rm -rf feeds/packages/shadow
 
+
+#rust编译问题
+sed -i 's/--set=llvm\.download-ci-llvm=true/--set=llvm.download-ci-llvm=false/' feeds/packages/lang/rust/Makefile
 
 #rm -rf feeds/packages/net/{alist,adguardhome,mosdns,xray*,v2ray*,v2ray*,sing*,smartdns}
 #rm -rf feeds/packages/utils/v2dat
