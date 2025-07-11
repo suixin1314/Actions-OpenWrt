@@ -41,7 +41,7 @@ rm -rf feeds/packages/lang/golang
 
 #替换golang
 git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
-
+./scripts/feeds install -a 
 
 #rust编译问题
 sed -i 's/--set=llvm\.download-ci-llvm=true/--set=llvm.download-ci-llvm=false/' feeds/packages/lang/rust/Makefile
