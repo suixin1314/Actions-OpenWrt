@@ -36,6 +36,7 @@ rm -rf feeds/luci/applications/luci-app-netdata
 rm -rf feeds/luci/applications/luci-app-serverchan
 rm -rf feeds/packages/mqttled
 rm -rf feeds/packages/shadow
+rm -rf /package/feeds/luci/luci-app-appfilter
 
 
 #rust编译问题
