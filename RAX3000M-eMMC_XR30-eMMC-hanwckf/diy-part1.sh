@@ -27,7 +27,8 @@ echo 'src-git OpenClash https://github.com/vernesong/OpenClash.git' >> feeds.con
 #git clone https://github.com/messense/aliyundrive-webdav package/messense
 #git clone https://github.com/destan19/OpenAppFilter package/OpenAppFilter
 #echo 'src-git qmodem https://github.com/FUjr/QModem.git;main' >> feeds.conf.default
-
+rm -rf feeds/packages/lang/golang
+git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
 
 #添加passwall的包
 #git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages package/openwrt-passwall
