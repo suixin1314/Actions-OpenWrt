@@ -32,4 +32,7 @@ echo 'src-git OpenClash https://github.com/vernesong/OpenClash.git' >> feeds.con
 #添加passwall的包
 #git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages package/openwrt-passwall
 
+# msd_lite
+git clone --depth=1 https://github.com/ximiTech/luci-app-msd_lite package/luci-app-msd_lite
+git clone --depth=1 https://github.com/ximiTech/msd_lite package/msd_lite
 
