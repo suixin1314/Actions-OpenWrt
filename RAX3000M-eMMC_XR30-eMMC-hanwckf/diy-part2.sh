@@ -31,6 +31,7 @@ sed -i 's|/bin/login|/bin/login -f root|g' feeds/packages/utils/ttyd/files/ttyd.
 #./scripts/feeds install -a -f -p qmodem
 
 #替换golang
+rm -rf feeds/packages/lang/golang
 git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
 ./scripts/feeds install -a 
 
@@ -41,7 +42,6 @@ rm -rf feeds/luci/applications/luci-app-serverchan
 rm -rf feeds/packages/mqttled
 rm -rf feeds/packages/shadow
 rm -rf /package/feeds/luci/luci-app-appfilter
-rm -rf feeds/packages/lang/golang
 rm -rf feeds/luci/luci-app-appfilter
 
 #rust编译问题
