@@ -38,6 +38,7 @@ rm -rf feeds/packages/mqttled
 rm -rf feeds/packages/shadow
 rm -rf /package/feeds/luci/luci-app-appfilter
 rm -rf feeds/packages/lang/golang
+rm -rf feeds/luci/luci-app-appfilter
 
 #替换golang
 git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
