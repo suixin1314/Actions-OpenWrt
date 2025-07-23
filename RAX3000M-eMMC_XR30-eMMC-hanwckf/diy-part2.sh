@@ -31,9 +31,9 @@ sed -i 's|/bin/login|/bin/login -f root|g' feeds/packages/utils/ttyd/files/ttyd.
 #./scripts/feeds install -a -f -p qmodem
 
 #替换golang
-#rm -rf feeds/packages/lang/golang
-#git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
-#./scripts/feeds install -a 
+rm -rf feeds/packages/lang/golang
+git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
+./scripts/feeds install -a 
 
 # 移除要替换的包
 rm -rf feeds/packages/net/msd_lite
@@ -45,7 +45,7 @@ rm -rf /package/feeds/luci/luci-app-appfilter
 rm -rf feeds/luci/luci-app-appfilter
 
 #rust编译问题
-sed -i 's/--set=llvm\.download-ci-llvm=true/--set=llvm.download-ci-llvm=false/' feeds/packages/lang/rust/Makefile
+#sed -i 's/--set=llvm\.download-ci-llvm=true/--set=llvm.download-ci-llvm=false/' feeds/packages/lang/rust/Makefile
 
 #rm -rf feeds/packages/net/{alist,adguardhome,mosdns,xray*,v2ray*,v2ray*,sing*,smartdns}
 #rm -rf feeds/packages/utils/v2dat
