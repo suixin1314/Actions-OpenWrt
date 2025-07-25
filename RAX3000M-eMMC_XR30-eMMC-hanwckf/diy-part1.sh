@@ -24,6 +24,9 @@ echo 'src-git kenzo https://github.com/kenzok8/openwrt-packages.git' >> feeds.co
 echo 'src-git OpenClash https://github.com/vernesong/OpenClash.git' >> feeds.conf.default
 echo 'src-git qmodem https://github.com/FUjr/QModem.git' >> feeds.conf.default
 
+git clone -b v1.0 https://github.com/lwb1978/openwrt-gecoosac package/openwrt-gecoosac
+
+
 #git clone https://github.com/messense/aliyundrive-webdav package/messense
 #git clone https://github.com/destan19/OpenAppFilter package/OpenAppFilter
 #echo 'src-git qmodem https://github.com/FUjr/QModem.git;main' >> feeds.conf.default
