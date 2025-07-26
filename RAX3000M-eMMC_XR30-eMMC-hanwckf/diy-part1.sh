@@ -23,8 +23,7 @@ echo 'src-git kenzo https://github.com/kenzok8/openwrt-packages.git' >> feeds.co
 #echo 'src-git UA3F https://github.com/SunBK201/UA3F.git' >> feeds.conf.default
 echo 'src-git OpenClash https://github.com/vernesong/OpenClash.git' >> feeds.conf.default
 echo 'src-git qmodem https://github.com/FUjr/QModem.git' >> feeds.conf.default
-
-git clone -b v1.0 https://github.com/lwb1978/openwrt-gecoosac package/openwrt-gecoosac
+echo 'src-git openwrt-gecoosac https://github.com/lwb1978/openwrt-gecoosac' >> feeds.conf.default
 
 
 #git clone https://github.com/messense/aliyundrive-webdav package/messense
