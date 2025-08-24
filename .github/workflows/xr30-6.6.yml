@@ -113,12 +113,19 @@ jobs:
         temp-reserve-mb: 100
         root-reserve-mb: 1024
 
-    - name: 下载固件源码
-      working-directory: /workdir
+    - name: Clone Source Code(克隆源代码)
       run: |
-        df -hT $PWD
-        git clone $REPO_URL -b $REPO_BRANCH openwrt
-        ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
+        df -hT $GITHUB_WORKSPACE
+        git clone --depth 1 -b $REPO_BRANCH $REPO_URL openwrt
+        cd openwrt
+        echo "OPENWRT_PATH=$PWD" >> $GITHUB_ENV
+
+    - name: Generate Variables(生成变量)
+      run: |
+        cp $CONFIG_FILE $OPENWRT_PATH/.config
+        cd $OPENWRT_PATH
+        make defconfig > /dev/null 2>&1
+        SOURCE_REPO="$(echo $REPO_URL | awk -F '/' '{print $(NF)}')"
 
     - name: 加载feeds.conf.default & DIY_P1_SH
       run: |
