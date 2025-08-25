@@ -92,17 +92,17 @@ jobs:
       run: |
         sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
         sudo -E apt-get -qq update
-        sudo -E apt-get -y install $(curl -fsSL is.gd/depends_ubuntu_2204)
+        sudo bash -c 'bash <(curl -s https://build-scripts.immortalwrt.org/init_build_environment.sh)'
         sudo -E apt-get -qq autoremove --purge
         sudo -E apt-get -qq clean
         sudo timedatectl set-timezone "$TZ"
         sudo mkdir -p /workdir
         sudo chown $USER:$GROUPS /workdir
         sudo -E systemctl daemon-reload
-        sudo apt install python3 pkg-config ninja-build clang
-        sudo apt install build-essential curl pkg-config libssl-dev git python3 cmake ninja-build gcc-multilib libc6-dev-i386
-        sudo bash -c 'bash <(curl -s https://build-scripts.immortalwrt.org/init_build_environment.sh)'
+        sudo apt install -y python3 pkg-config ninja-build clang
+        sudo apt install -y build-essential curl pkg-config libssl-dev git python3 cmake ninja-build gcc-multilib libc6-dev-i386
         sudo apt-get install -y libpcre3-dev rustc cargo
+        sudo apt install -y libcrypt1
 
     - name: Combine Disks(合并磁盘)
       uses: easimon/maximize-build-space@master
@@ -140,14 +140,12 @@ jobs:
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         
-
     - name: 加载config & DIY_P2_SH
       run: |
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE $OPENWRT_PATH/.config
         chmod +x $DIY_P2_SH
         cd $OPENWRT_PATH
         $GITHUB_WORKSPACE/$DIY_P2_SH
-
 
     - name: 设置LAN IP地址（路由器登录地址）
       run: |
@@ -205,7 +203,6 @@ jobs:
         sed -i 's/CONFIG_PACKAGE_luci-i18n-mtwifi-cfg-zh-cn=y/CONFIG_PACKAGE_luci-i18n-mtk-zh-cn=y/g' .config
         sed -i 's/CONFIG_PACKAGE_mtwifi-cfg=y/CONFIG_PACKAGE_wifi-profile=y/g' .config
         sed -i 's/CONFIG_PACKAGE_lua-cjson=y/CONFIG_WIFI_NORMAL_SETTING=y/g' .config
-
 
     - name: SSH链接管理
       uses: P3TERX/ssh2actions@v1.0.0
