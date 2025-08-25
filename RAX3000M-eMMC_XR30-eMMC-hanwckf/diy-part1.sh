@@ -13,7 +13,7 @@
 # Uncomment a feed source
 #sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
 
-cp $GITHUB_WORKSPACE/RAX3000M-eMMC_XR30-eMMC-hanwckf/999-chanage-default-leaseduration.patch $OPENWRT_PATH/feeds/packages/net/miniupnpd/patches/
+
 
 # Add a feed source
 echo 'src-git helloworld https://github.com/fw876/helloworld' >>feeds.conf.default
