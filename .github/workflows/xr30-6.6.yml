@@ -261,8 +261,7 @@ jobs:
       if: env.UPLOAD_FIRMWARE == 'true' && !cancelled()
       run: | 
         mapfile -t devices < <(grep '^CONFIG_TARGET_DEVICE.*=y' $OPENWRT_PATH/.config | sed -r 's/.*DEVICE_(.*)=y/\1/')
-        cd $OPENWRT_PATH/bin/targets/*/*
-        rm -rf packages
+        cd $OPENWRT_PATH/bin/targets/
         sudo -E apt-get -qq install rename
         for val in "${devices[@]}"; do
           rename "s/.*${val}/${{ env.FILE_DATE }}-${{ env.OPENWRT_NAME }}-${val}${{ env.WIFI_VERSION }}${{ env.EEPROM }}${{ env.BUILD_DOCKERMAN }}/" *
