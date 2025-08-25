@@ -90,22 +90,6 @@ jobs:
         sudo bash -c 'bash <(curl -s https://build-scripts.immortalwrt.org/init_build_environment.sh)'
         sudo apt-get install -y libpcre3-dev rustc cargo
 
-
-    - name: 清理磁盘空间(Ubuntu)
-      uses: jlumbroso/free-disk-space@main
-      with:
-        # this might remove tools that are actually needed,
-        # when set to "true" but frees about 6 GB
-        tool-cache: true
-        
-        # all of these default to true, but feel free to set to
-        # "false" if necessary for your workflow
-        android: false
-        dotnet: false
-        haskell: false
-        large-packages: false
-        swap-storage: false
-        
     - name: Combine Disks(合并磁盘)
       uses: easimon/maximize-build-space@master
       with:
@@ -113,6 +97,9 @@ jobs:
         temp-reserve-mb: 100
         root-reserve-mb: 1024
 
+    - name: Checkout
+      uses: actions/checkout@main
+      
     - name: Clone Source Code(克隆源代码)
       run: |
         df -hT $GITHUB_WORKSPACE
@@ -142,11 +129,10 @@ jobs:
 
     - name: 加载config & DIY_P2_SH
       run: |
-        [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
+        [ -e $CONFIG_FILE ] && mv $CONFIG_FILE $OPENWRT_PATH/.config
         chmod +x $DIY_P2_SH
         cd $OPENWRT_PATH
         $GITHUB_WORKSPACE/$DIY_P2_SH
-
 
 
     - name: 设置LAN IP地址（路由器登录地址）
@@ -263,7 +249,7 @@ jobs:
       id: organize
       if: env.UPLOAD_FIRMWARE == 'true' && !cancelled()
       run: | 
-        mapfile -t devices < <(grep '^CONFIG_TARGET_DEVICE.*=y' openwrt/.config | sed -r 's/.*DEVICE_(.*)=y/\1/')
+        mapfile -t devices < <(grep '^CONFIG_TARGET_DEVICE.*=y' $OPENWRT_PATH/.config | sed -r 's/.*DEVICE_(.*)=y/\1/')
         cd $OPENWRT_PATH/bin/targets/*/*
         rm -rf packages
         sudo -E apt-get -qq install rename
