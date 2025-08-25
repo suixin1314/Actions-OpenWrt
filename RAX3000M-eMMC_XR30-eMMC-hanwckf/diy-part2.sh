@@ -52,3 +52,5 @@ rm -rf feeds/luci/luci-app-appfilter
 #rm -rf feeds/packages/lang/golang
 #git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
 #./scripts/feeds install -a 
+
+cp $GITHUB_WORKSPACE/RAX3000M-eMMC_XR30-eMMC-hanwckf/999-chanage-default-leaseduration.patch $OPENWRT_PATH/feeds/packages/net/miniupnpd/patches/
