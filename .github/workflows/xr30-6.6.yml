@@ -263,6 +263,9 @@ jobs:
       run: | 
         mapfile -t devices < <(grep '^CONFIG_TARGET_DEVICE.*=y' $OPENWRT_PATH/.config | sed -r 's/.*DEVICE_(.*)=y/\1/')
         cd $OPENWRT_PATH/bin/
+        echo -e "ls -a /$OPENWRT_PATH"
+        echo -e "ls -a /$OPENWRT_PATH/bin/"
+        echo -e "ls -a /$OPENWRT_PATH/bin/targets"
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
         echo "status=success" >> $GITHUB_OUTPUT
 
@@ -270,7 +273,7 @@ jobs:
       uses: actions/upload-artifact@main
       if: steps.organize.outputs.status == 'success' && !cancelled()
       with:
-        name: ${{ env.FILE_DATE }}-${{ env.OPENWRT_NAME }}-${{ env.UPLOAD_TAG_NAME }}${{ env.WIFI_VERSION }}${{ env.EEPROM }}${{ env.BUILD_DOCKERMAN }}
+        name: OpenWrt_firmware${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
         path: ${{ env.FIRMWARE }}
 
     - name: 生成固件Release标签
@@ -306,7 +309,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        files: ${{ env.FIRMWARE }}/*
-        name: ${{ env.FILE_DATE }}-${{ env.OPENWRT_NAME }}-${{ env.UPLOAD_TAG_NAME }}${{ env.WIFI_VERSION }}${{ env.EEPROM }}${{ env.BUILD_DOCKERMAN }}
+        name: OpenWrt_firmware${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
+        path: ${{ env.FIRMWARE }}
         tag_name: ${{ steps.tag.outputs.release_tag }}
         body_path: release.txt
