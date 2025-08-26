@@ -263,9 +263,9 @@ jobs:
       run: | 
         mapfile -t devices < <(grep '^CONFIG_TARGET_DEVICE.*=y' $OPENWRT_PATH/.config | sed -r 's/.*DEVICE_(.*)=y/\1/')
         cd $OPENWRT_PATH/bin/
-        echo -e "ls -a /$OPENWRT_PATH"
-        echo -e "ls -a /$OPENWRT_PATH/bin/"
-        echo -e "ls -a /$OPENWRT_PATH/bin/targets"
+        echo "全目录：$(ls -a /$OPENWRT_PATH)"
+        echo "bin：$(ls -a /$OPENWRT_PATH/bin/)"
+        echo "targets：$(ls -a /$OPENWRT_PATH/bin/targets)"
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
         echo "status=success" >> $GITHUB_OUTPUT
 
