@@ -40,5 +40,4 @@ git clone https://github.com/lwb1978/openwrt-gecoosac package/openwrt-gecoosac
 git clone --depth=1 https://github.com/ximiTech/luci-app-msd_lite package/luci-app-msd_lite
 git clone --depth=1 https://github.com/ximiTech/msd_lite package/msd_lite
 
-git fetch origin pull/209/head
-git merge --squash FETCH_HEAD
+
