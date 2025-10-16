@@ -60,7 +60,7 @@ on:
       Xr30-256m:
         description: '256m flash'
         required: true
-        default: false
+        default: true
         type: boolean
 #  schedule:
 #    - cron: 0 16 * * *
