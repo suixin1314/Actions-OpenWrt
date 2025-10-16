@@ -57,6 +57,11 @@ on:
         description: 'SSH connection to Actions'
         required: false
         default: 'false'
+      Xr30-256m:
+        description: '256m flash'
+        required: true
+        default: false
+        type: boolean
 #  schedule:
 #    - cron: 0 16 * * *
 
@@ -215,6 +220,12 @@ jobs:
       run: |
         cd openwrt
         sed -i '/CONFIG_PACKAGE_luci-app-dockerman=y/d' .config
+
+    - name: 256m
+      if: github.event.inputs.Xr30-256m == 'true'
+      run: |
+        cd openwrt
+        
         
     - name: SSH链接管理
       uses: P3TERX/ssh2actions@v1.0.0
