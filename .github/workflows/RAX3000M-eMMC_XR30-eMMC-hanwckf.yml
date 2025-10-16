@@ -225,7 +225,7 @@ jobs:
       if: github.event.inputs.Xr30-256m == 'true'
       run: |
         cd openwrt
-        
+        cp $GITHUB_WORKSPACE/RAX3000M-eMMC_XR30-eMMC-hanwckf/mt7981-cmcc-xr30-256m.dts target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/
         
     - name: SSH链接管理
       uses: P3TERX/ssh2actions@v1.0.0
