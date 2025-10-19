@@ -147,7 +147,7 @@ jobs:
     - name: 256m
       if: github.event.inputs.Xr30-256m == 'true'
       run: |
-        cd openwrt
+        cd $OPENWRT_PATH
         cp -f $GITHUB_WORKSPACE/RAX3000M-eMMC_XR30-eMMC-hanwckf/mt7981-cmcc-xr30-256m.dts /target/linux/mediatek/dts/
         cp -f $GITHUB_WORKSPACE/RAX3000M-eMMC_XR30-eMMC-hanwckf/filogic.mk‎ target/linux/mediatek/image/     
 
