@@ -150,6 +150,7 @@ jobs:
         cd $OPENWRT_PATH
         cp -f $GITHUB_WORKSPACE/RAX3000M-eMMC_XR30-eMMC-hanwckf/mt7981-cmcc-xr30-256m.dts target/linux/mediatek/dts/
         cp -f $GITHUB_WORKSPACE/RAX3000M-eMMC_XR30-eMMC-hanwckf/filogic.mk‎ target/linux/mediatek/image/     
+        cp -f $GITHUB_WORKSPACE/RAX3000M-eMMC_XR30-eMMC-hanwckf/libxcrypt-Makefile feeds/packages/libs/libxcrypt/Makefile
 
     - name: 下载安装包
       id: package
