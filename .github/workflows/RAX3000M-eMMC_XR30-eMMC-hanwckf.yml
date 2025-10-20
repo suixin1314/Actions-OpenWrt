@@ -227,6 +227,7 @@ jobs:
         cd openwrt
         cp -f $GITHUB_WORKSPACE/RAX3000M-eMMC_XR30-eMMC-hanwckf/mt7981-cmcc-xr30-256m.dts target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/
         cp -f $GITHUB_WORKSPACE/RAX3000M-eMMC_XR30-eMMC-hanwckf/mt7981.mk target/linux/mediatek/image/
+        cp -f $GITHUB_WORKSPACE/RAX3000M-eMMC_XR30-eMMC-hanwckf/0008-bt-r320-hanwckf.patch $OPENWRT_PATH/target/linux/mediatek/patches-5.4/
         
     - name: SSH链接管理
       uses: P3TERX/ssh2actions@v1.0.0
