@@ -147,6 +147,7 @@ jobs:
         cp -f $GITHUB_WORKSPACE/RAX3000M-eMMC_XR30-eMMC-hanwckf/mt7981-cmcc-xr30-256m.dts target/linux/mediatek/files-6.6/arch/arm64/boot/dts/mediatek/
         cp -f $GITHUB_WORKSPACE/RAX3000M-eMMC_XR30-eMMC-hanwckf/mt7981.mk target/linux/mediatek/image/
         cp -f $GITHUB_WORKSPACE/RAX3000M-eMMC_XR30-eMMC-hanwckf/0008-bt-r320-hanwckf.patch target/linux/mediatek/patches-6.6/
+        cp -f $GITHUB_WORKSPACE/RAX3000M-eMMC_XR30-eMMC-hanwckf/mediatek package/boot/uboot-envtools/files/mediatek
 
     - name: 下载安装包
       id: package
