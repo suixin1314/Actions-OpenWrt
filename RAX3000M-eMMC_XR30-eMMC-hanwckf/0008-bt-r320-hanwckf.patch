@@ -176,21 +176,6 @@ index 0000000000..74c6f4e02c
 +   };
 + };
 +};
-diff --git a/package/boot/uboot-envtools/files/mediatek b/package/boot/uboot-envtools/files/mediatek
-index e992673373..c550e601c8 100644
---- a/package/boot/uboot-envtools/files/mediatek
-+++ b/package/boot/uboot-envtools/files/mediatek
-@@ -13,6 +13,10 @@ touch /etc/config/ubootenv
- board=$(board_name)
- 
- case "$board" in
-+bt,r320)
-+	env_dev=$(find_mmc_part "u-boot-env")
-+	[ -n "$env_dev" ] && ubootenv_add_uci_config "$env_dev" "0" "0x20000"
-+	;;
- cmcc,rax3000m-emmc |\
- glinet,gl-mt6000 |\
- clx,s20p* |\
 diff --git a/package/mtk/applications/mtk-smp/files/smp.sh b/package/mtk/applications/mtk-smp/files/smp.sh
 index 1fa10b2e80..b4ac01afe1 100755
 --- a/package/mtk/applications/mtk-smp/files/smp.sh
